@@ -1,9 +1,5 @@
 # PSLab-Mini-hardware
 
-[![PSLab-Hardware](https://github.com/fossasia/pslab-hardware/actions/workflows/hardware-ci.yml/badge.svg)](https://github.com/fossasia/pslab-hardware/actions/workflows/hardware-ci.yml)
-[![Gitter](https://badges.gitter.im/fossasia/pslab.svg)](https://gitter.im/fossasia/pslab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Twitter Follow](https://img.shields.io/twitter/follow/pslabio.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/pslabio)
-
 This branch is dedicated to prototyping the PSLab-Mini board and push out a working board that has functionalities of oscilloscope, multimeter and if time allows it, a logic analyser.
 
 ## PCB Layout
