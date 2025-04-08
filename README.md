@@ -1,90 +1,36 @@
-# pslab-hardware
+# PSLab-Mini-hardware
 
 [![PSLab-Hardware](https://github.com/fossasia/pslab-hardware/actions/workflows/hardware-ci.yml/badge.svg)](https://github.com/fossasia/pslab-hardware/actions/workflows/hardware-ci.yml)
 [![Gitter](https://badges.gitter.im/fossasia/pslab.svg)](https://gitter.im/fossasia/pslab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pslabio.svg?style=social&label=Follow&maxAge=2592000?style=flat-square)](https://twitter.com/pslabio)
 
-This repository contains the [PSLab](https://pslab.io) hardware design files. PSLab is a tiny pocket science lab that provides an array of test and measurement instruments for doing science and engineering experiments. It can function like an oscilloscope, waveform generator, frequency counter, programmable voltage and current source and also as a data logger. The first version of hardware (v1) was developed by [Jithin](https://github.com/jithinbp). Later versions were developed by [Padmal](https://github.com/CloudyPadmal) and [Rafael](https://github.com/RafaelLeeImg).
+This branch is dedicated to prototyping PSLab-mini board and push out a working board that has functionalities of oscillscope, multimeter and if time allows it, a logic analyser.
 
 ## PCB Layout
+* I made a new PCB layout by first updating and removing components from the PSLab Schematic.
+* Then imported the changed schematic into a fresh PCB editor file in KiCAD.
+* Made a new edge cuts that provide a smaller footprint to the board compared to the current board
+* Placed all the components and made a 4 layer PCB
+* The 4 layers are as following:
+     * F.Cu(Front Copper) - Consists of signal routings
+     * GND(Gound) - Consist of a ground pour in the entire layer
+     * VDDA(Power) - Consist of a copper pour that transmits power to majority of the components
+     * B.Cu(Bottom Copper) - Also consists of the routing
+* Used both through and burried vias:
+     * Burrried Vias - Used Buried vias for connecting the components to the gorund and power layer
+     * Through Vias - Used Through vias for connecting the top and bottom copper layer for essentially connecting and routing where ever there was blockage 
+       due to already present routes
+       
+
 Front Side                        | Back Side
  -------------------------------- | ----------------------------------
-![](docs/images/PSLab_v6_top.png) | ![](docs/images/PSLab_v6_bottom.png)
+![Screenshot 2025-04-08 at 3 04 56 PM copy](https://github.com/user-attachments/assets/1104c163-efd1-4922-8c99-5edf4b4aa182) | ![Screenshot 2025-04-08 at 3 05 13 PM copy](https://github.com/user-attachments/assets/ab8984cb-9091-4645-85ad-bdd69faf825d)
 
+## New Schematic
+The new schematic has been made on top of the current schematic for a quiker prototype and clearly shows all the components removed in the current PSLab board and explains resoning behind removable of each. 
 
-## Pin-outs
-- Find the pin-out diagram of PSLab V6 [here](docs/pin_layouts/PSLab_Pin_Layout.pdf)!
+<img src="https://github.com/user-attachments/assets/4487f714-e261-4675-8c0c-774fbae5222c" alt="PSLab mini" width="700">
 
-## Applications and Firmware Source Repositories
-
-| [![](docs/images/getfirmware.png)](https://github.com/fossasia/pslab-firmware)	|[![](docs/images/getonfdroid.png)](https://f-droid.org/en/packages/io.pslab/)	| [![](docs/images/getongoogleplay.png)](https://play.google.com/store/apps/details?id=io.pslab)	| [![](docs/images/getonlinux.png)](https://github.com/fossasia/pslab-desktop/tree/install)	| [![](docs/images/getonwindows.png)](https://github.com/fossasia/pslab-desktop/tree/install)	|
-|---	|---	|---	|---	|---	|
-
-The following software components are available:
-* Firmware: https://github.com/fossasia/pslab-firmware
-* Android app: https://github.com/fossasia/pslab-android
-* Desktop app: https://github.com/fossasia/pslab-desktop
-
-## Buy Device
-
-* You can get a Pocket Science Lab device from the [FOSSASIA Shop](https://fossasia.com).
-* More resellers are listed on the [PSLab website](https://pslab.io/shop/).
-
-## Communication
-
-* Our chat channel is on Gitter here at [PSLab](https://gitter.im/fossasia/pslab)
-* Mailing List https://groups.google.com/forum/#!forum/pslab-fossasia
-
-## Repository Structure
-
-```
-📦pslab-hardware
- ┣ 📂archives                                   # Source files for previous PSLab versions
- ┃ ┣ 📂Breakout_Boards
- ┃ ┣ 📂PSLab KiCAD
- ┃ ┣ 📂PSLab KiCAD v2
- ┃ ┗ 📂PSLab KiCAD v3
- ┣ 📂docs                                       # Supplementary material
- ┃ ┣ 📂components
- ┃ ┃ ┣ 📜BillOfMaterials.csv                    # Component list
- ┃ ┃ ┗ 📜InteractiveBoM.html                    # Interactive version of BoM
- ┃ ┣ 📂datasheets                               # PDF datasheets for components used in PSLab
- ┃ ┣ 📂drawings                                 # CAD dimension drawings
- ┃ ┣ 📂images
- ┃ ┃ ┣ 📂pslab_version_previews
- ┃ ┃ ┣ 📜 ...
- ┃ ┃ ┗ 📜PSLab_v6_top.png
- ┃ ┣ 📂pin_layouts                              # Pin labels and specifications
- ┃ ┃ ┣ 📜PSLab_Pin_Layout.pdf
- ┃ ┃ ┗ 📜PSLab_Pin_Layout.svg
- ┃ ┣ 📂position_files
- ┃ ┃ ┗ 📜PositionFile.csv                       # Pick and place information
- ┃ ┣ 📂reference                                # TeX documentation (stale)
- ┃ ┗ 📂schematics
- ┃ ┃ ┗ 📜PSLab.pdf                              # Board schematic in PDF
- ┣ 📂output
- ┃ ┣ 📂Gerber                                   # Gerber files for the current board design
- ┃ ┗ 📂Images                                   # Images of the four copper layers
- ┣ 📂print                                      # Silk screen images
- ┃ ┣ 📂Back-Side-Images
- ┃ ┗ 📜Readme.md
- ┗ 📂schematics                                 # KiCAD project files
-   ┣ 📂3DModels                                 # STEP 3D models
-   ┣ 📂PSLab.pretty                             # Custom library files
-   ┣ 📜 ...
-   ┗ 📜PSLab.pro                                # Main project file
-```
-
-## Version Information
-
-| Version | Content | Preview |
-| -------------- | ------- | ------- |
-| PSLab KiCAD v1   | Original version with `SEELABLET` schematics and layout files | ![](docs/images/pslab_version_previews/PSLab_v1.png) |
-| PSLab KiCAD v2 | Developed version with new additions (Voltage regulator, Oscillator) | ![](docs/images/pslab_version_previews/PSLab_v2.png) |
-| PSLab KiCAD v3 | Device layout changed to Arduino Uno form factor | ![](docs/images/pslab_version_previews/PSLab_v3.png) |
-| PSLab KiCAD v4 | Assembly optimized version with Arduino Mega form factor having components mounted only on top side | ![](docs/images/pslab_version_previews/PSLab_v4.png) |
-| PSLab KiCAD v5 | Added socket for external bluetooth module and bottom silk screen with pin description | ![](docs/images/pslab_version_previews/PSLab_v5.png) |
-| PSLab KiCAD v6 | Added external power input, RTC module, SD Card slot, USB type C, ESP 01 and upgraded UART and power ICs | ![](docs/images/pslab_version_previews/PSLab_v6.png) |
 
 ## Platform
 
@@ -93,71 +39,42 @@ The following software components are available:
 * Compiler: [MPLAB® XC16 Compiler](http://www.microchip.com/mplab/compilers)
 * Programming Tool: [PICkit™ 3 In-Circuit Debugger](http://www.microchip.com/Developmenttools/ProductDetails.aspx?PartNO=PG164130)
 
-## Parts list
+## New parts list
 
 * [PIC24EP256GP204](http://www.microchip.com/wwwproducts/en/PIC24EP256GP204) - Microcontroller
 * [MCP6S21](http://www.microchip.com/wwwproducts/en/mcp6s21) - Programmable gain amplifier
-* [MCP4728](http://www.microchip.com/wwwproducts/en/mcp4728) - 4 Channel DAC
-* [TC7660](http://www.microchip.com/wwwproducts/en/TC7660) - Charge Pump voltage invertor
-* [TC1240A](http://www.microchip.com/wwwproducts/en/TC1240A) - Charge Pump voltage doubler
 * [TL082](http://www.ti.com/product/TL082) - 2 channel Op-Amp
-* [LM324](http://www.ti.com/product/LM324) - 4 channel Op-Amp
-* [DS1307Z+](https://datasheets.maximintegrated.com/en/ds/DS1307.pdf) - RTC module
-* [LDFM33PUR](https://www.st.com/resource/en/datasheet/ldfm.pdf) - 3.3 V regulator
-* [LDL212PU50R](https://www.st.com/resource/en/datasheet/ldl212.pdf) - 5.0 V regulator
 * [CP2102N-A02-GQFN24](https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf) - USB-UART bridge
-* [74HC126](http://www.ti.com/product/SN74HC126) - 4 channel buffer
 * [SP0503BAHTG](https://m.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp05_datasheet.pdf.pdf) - ESD protector
 
 * 0.5 A Fuse
 * Assorted resistors, capacitors & diodes
 
-Find the complete bill of materials from [this link](docs/components/BillOfMaterials.csv).
-
-### Optional Parts
-
-Extension slots for an ESP is available.
-* [ESP8266 (ESP-01)](http://www.microchip.ua/wireless/esp01.pdf) - UART-TCP bridge
-
 ## Hardware Specs
 
 * 3-Channel up to 2MSPS Oscilloscope. Software selectable amplification stages
-* 12-bit Voltmeter with programmable gain. Input ranges from +/-10 mV to +/-16 V
-* 3x 12-bit Programmable voltage sources +/-3.3 V,+/-5V,0-3 V
-* 12-bit Programmable current source. 0-3.3 mA
-* Supports Advanced plugins/Add-on Modules
-* 4-Channel, 4 MHz Logic Analyzer
-* 2x Sine/Triangular wave generators. 5 Hz to 5 KHz. Manual amplitude control for SI1
-* 4x PWM generators. 15 nS resolution. Up to 8 MHz
+* 12-bit Voltmeter . Input ranges from +/-10 mV to +/-16 V
 * Capacitance Measurement. pF to uF range
-* I2C, SPI and UART data buses for Accelerometer gyroscope humidity and temperature sensor modules etc
+* UART data buses for secondary modules 
 
-## Feature list for the acquisition and control
+## Feature list for PSLab-Mini
 
 ### Oscilloscopes
 
-One of the main features of PSLab is the 3-channel Oscilloscope which can monitor analog inputs at maximum of 2 million samples per second. It includes controls such as triggering, and gain selection. Uses Python-Scipy for curve fitting.
-
-### Waveform Generators
-
-* SI1 : 5 Hz – 5 KHz arbitrary waveform generator. Manual amplitude control up to +/-3 Volts
-* SI2 : 5 Hz – 5 KHz arbitrary waveform generator. Amplitude of +/-3 Volts. Attenuable via software
-* SQx : There are four phase correlated PWM outputs with maximum frequency 32 MHz, 15 nano second duty cycle, and phase difference control.
+One of the main features of PSLab is the 3-channel Oscilloscope which can monitor analog inputs at maximum of 2 million samples per second.
+In PSLab mini, this will be retained but with the following changes:
+* Reduce the channels from 3 to 2 channel oscilloscope to reduce the components and cost
+* Aim at increasing the max sampling rate
 
 ### Measurement Functions
 
 * Frequency counter tested up to 16 MHz.
 * Capacitance Measurement. pF to uF range
-* PSLab has several 12-bit analog inputs (function as voltmeters) with programmable gains, and maximum ranges varying from +/-5 mV to +/-16 V.
+* Resistance measurement
+* Voltmeter with a range of +/-10 mV to +/-16 V
 
-### Voltage and Current Sources
-
-* 12-bit Constant Current source. Maximum current 3.3 mA (subject to load resistance).
-* PSLab has three 12-bit Programmable voltage sources +/-3.3 V,+/-5 V,0-3 V. (PV1, PV2, PV3) controls
 
 ### Other useful tools
 
-* 4MHz, 4-channel Logic analyzer with 15 nS resolution. Voltage and current sources
-* SPI, I2C and UART outputs
-* Graphical Interfaces for Oscilloscope, Logic Analyser, streaming data and several experiments developed that use a common framework which drastically reduces code required to incorporate control and plotting widgets.
-* PSLab also has space for an ESP-01 module for WiFi access with access point/station mode.
+* UART outputs
+* Graphical Interfaces for Oscilloscope, Multimeter, streaming data and several experiments developed that use a common framework which drastically reduces code required to incorporate control and plotting widgets.
