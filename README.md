@@ -8,17 +8,17 @@ This branch is dedicated to prototyping PSLab-mini board and push out a working 
 
 ## PCB Layout
 * I made a new PCB layout by first updating and removing components from the PSLab Schematic.
-* Then imported the changed schematic into a fresh PCB editor file in KiCAD.
-* Made a new edge cuts that provide a smaller footprint to the board compared to the current board
-* Placed all the components and made a 4 layer PCB
-* The 4 layers are as following:
+* The changed schematic was imported into a fresh PCB editor file in KiCAD.
+* Made new edge cuts that provide a smaller footprint to the board compared to the current board
+* Placed all the components and made a 4-layer PCB
+* The 4 layers are as follows:
      * F.Cu(Front Copper) - Consists of signal routings
-     * GND(Gound) - Consist of a ground pour in the entire layer
-     * VDDA(Power) - Consist of a copper pour that transmits power to majority of the components
+     * GND(Ground) - Consists of a ground pour in the entire layer
+     * VDDA(Power) - Consists of a copper pour that transmits power to the majority of the components
      * B.Cu(Bottom Copper) - Also consists of the routing
-* Used both through and burried vias:
-     * Burrried Vias - Used Buried vias for connecting the components to the gorund and power layer
-     * Through Vias - Used Through vias for connecting the top and bottom copper layer for essentially connecting and routing where ever there was blockage 
+* Used both through and buried vias:
+     * Buried Vias - Used buried vias for connecting the components to the ground and power layer
+     * Through Vias - Used Through vias for connecting the top and bottom copper layer for essentially connecting and routing wherever there was a blockage 
        due to already present routes
        
 
